@@ -1,0 +1,54 @@
+{
+  "Version": 1,
+  "Hash": "rMQiVsjBVZLynyfpu5GRYfwcmBWMQ+4u4hHSFoBSn2k=",
+  "Source": "FRUITABLE",
+  "BasePath": "_content/FRUITABLE",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "FRUITABLE\\wwwroot",
+      "Source": "FRUITABLE",
+      "ContentRoot": "C:\\Users\\ACER PREDATOR\\OneDrive\\Desktop\\FRUITABLE-Asp.Net Project\\FRUITABLE\\FRUITABLE\\wwwroot\\",
+      "BasePath": "_content/FRUITABLE",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\ACER PREDATOR\\OneDrive\\Desktop\\FRUITABLE-Asp.Net Project\\FRUITABLE\\FRUITABLE\\obj\\Debug\\net6.0\\scopedcss\\bundle\\FRUITABLE.styles.css",
+      "SourceId": "FRUITABLE",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\ACER PREDATOR\\OneDrive\\Desktop\\FRUITABLE-Asp.Net Project\\FRUITABLE\\FRUITABLE\\obj\\Debug\\net6.0\\scopedcss\\bundle\\",
+      "BasePath": "_content/FRUITABLE",
+      "RelativePath": "FRUITABLE.styles.css",
+      "AssetKind": "All",
+      "AssetMode": "CurrentProject",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "ScopedCss",
+      "AssetTraitValue": "ApplicationBundle",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\ACER PREDATOR\\OneDrive\\Desktop\\FRUITABLE-Asp.Net Project\\FRUITABLE\\FRUITABLE\\obj\\Debug\\net6.0\\scopedcss\\bundle\\FRUITABLE.styles.css"
+    },
+    {
+      "Identity": "C:\\Users\\ACER PREDATOR\\OneDrive\\Desktop\\FRUITABLE-Asp.Net Project\\FRUITABLE\\FRUITABLE\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\FRUITABLE.bundle.scp.css",
+      "SourceId": "FRUITABLE",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\ACER PREDATOR\\OneDrive\\Desktop\\FRUITABLE-Asp.Net Project\\FRUITABLE\\FRUITABLE\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\",
+      "BasePath": "_content/FRUITABLE",
+      "RelativePath": "FRUITABLE.bundle.scp.css",
+      "AssetKind": "All",
+      "AssetMode": "Reference",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "ScopedCss",
+      "AssetTraitValue": "ProjectBundle",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\ACER PREDATOR\\OneDrive\\Desktop\\FRUITABLE-Asp.Net Project\\FRUITABLE\\FRUITABLE\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\FRUITABLE.bundle.scp.css"
+    }
+  ]
+}
