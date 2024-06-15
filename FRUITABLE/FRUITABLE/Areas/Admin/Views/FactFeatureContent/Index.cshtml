@@ -1,0 +1,44 @@
+﻿@model List<FactFeatureContent>
+
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+ 
+
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <a class="btn btn-success" asp-area="Admin" asp-controller="FactFeatureContent" asp-action="Create">Create FactFeatureContent</a>
+
+
+            <table class="table table-bordered table-contextual mt-5">
+                <thead>
+                    <tr>
+                        <th> Title </th>
+                        <th> NumberInfo </th>
+                        <th> Icon </th>
+                        <th> Settings </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td> @item.Title </td>
+                            <td> @item.NumberInfo </td>
+                            <td> @item.Icon </td>
+                            <td>
+                                <a class="btn btn-info" asp-area="Admin" asp-controller="FactFeatureContent" asp-route-id="@item.Id" asp-action="Detail">Detail</a>
+                                <a class="btn btn-primary" asp-area="Admin" asp-controller="FactFeatureContent" asp-route-id="@item.Id" asp-action="Edit">Edit</a>
+                                <a class="btn btn-danger" asp-area="Admin" asp-controller="FactFeatureContent" asp-route-id="@item.Id" asp-action="Delete">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
