@@ -108,6 +108,31 @@ namespace FRUITABLE.Migrations
                     b.ToTable("Categories");
                 });
 
+            modelBuilder.Entity("FRUITABLE.Models.ContentService", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Image")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("contentServices");
+                });
+
             modelBuilder.Entity("FRUITABLE.Models.FactFeatureContent", b =>
                 {
                     b.Property<int>("Id")

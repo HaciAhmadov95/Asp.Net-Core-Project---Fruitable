@@ -15,12 +15,6 @@ namespace FRUITABLE.Models
         [Column(TypeName = "decimal(18, 6)")]
         public decimal MinWeight { get; }
         public ICollection<Review> Reviews { get; set; }
-        public ICollection<ProductImages> ProductImages { get; }
-
-
-
-
-
-
+        public ICollection<ProductImages> ProductImages { get; set; }
     }
 }

@@ -18,6 +18,7 @@ namespace FRUITABLE.Data
         public DbSet<Settings> Settings { get; set; }
         public DbSet<Features> Features { get; set; }
         public DbSet<FactFeatureContent> factFeatureContents { get; set; }
+        public DbSet<ContentService> contentServices { get; set; }
 
     }
 }
