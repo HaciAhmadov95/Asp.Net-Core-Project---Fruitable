@@ -109,14 +109,14 @@
                         </li>
                         @foreach (var item in Model.Categories)
                         {
-                            <li class="nav-item">
+                            <li class="nav-item category" category-id="@item.Id" style="cursor: pointer;">
+                                >
                                 <a class="d-flex py-2 m-2 bg-light rounded-pill" data-bs-toggle="pill" href="#tab-2">
                                     <span class="text-dark" style="width: 130px;">@item.Name</span>
                                 </a>
                             </li>
                         }
-                        
-                        
+     
                     </ul>
                 </div>
             </div>
@@ -128,9 +128,10 @@
                                 @foreach (var item in Model.Products)
                                 {
                                     <div class="col-md-6 col-lg-4 col-xl-3">
-                                        <div class="rounded position-relative fruite-item">
+                                            <a asp-controller="Product" asp-action="Detail" asp-route-id="@item.Id">
+                                        <div class="rounded position-relative fruite-item" category-id="@item.CategoryId">
                                             <div class="fruite-img">
-                                                <img src="img/@item.ProductImages.FirstOrDefault(m=>m.IsMain).Image" class="img-fluid w-100 rounded-top" alt="">
+                                                <img src="img/@item.ProductImages.FirstOrDefault(m=>m.IsMain)?.Image" class="img-fluid w-100 rounded-top" alt="">
                                             </div>
                                             <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">@item.Category.Name</div>
                                             <div class="p-4 border border-secondary border-top-0 rounded-bottom">
@@ -142,6 +143,7 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        </a>
                                     </div>
                                 }
                                

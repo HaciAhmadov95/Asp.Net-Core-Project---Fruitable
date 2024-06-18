@@ -7,17 +7,15 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<AppDbContext>(opt =>
 opt.UseSqlServer(builder.Configuration.GetConnectionString("default"))
 );
 
-
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<ISettingsService, SettingsService>();
-
+builder.Services.AddScoped<IProductService, ProductService>();
 
 builder.Services.AddIdentity<AppUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
 
@@ -42,7 +40,6 @@ app.UseRouting();
 app.UseAuthentication();
 
 app.UseAuthorization();
-
 
 app.MapControllerRoute(
   name: "areas",

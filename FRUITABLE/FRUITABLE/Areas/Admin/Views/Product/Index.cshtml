@@ -1,0 +1,59 @@
+﻿@model Paginate<ProductVM>
+
+
+<div class="container mt-5">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Image</th>
+                <th scope="col">Name</th>
+                <th scope="col">Category</th>
+                <th scope="col">Settings</th>
+            </tr>
+        </thead>
+        <a style="margin-left:200px;margin-top:10px;" class="btn btn-success" asp-area="Admin" asp-controller="Product" asp-action="Create">Create Product</a>
+
+        @foreach (var item in Model.Datas)
+        {
+            <tbody>
+                <tr>
+                    <td><img src="~/img/@item.Image" style="width:100px;height:100px;margin-left:200px;" /></td>
+                    <td>@item.Name</td>
+                    <td>@item.Category</td>
+                    <td>
+                        <a class="btn btn-info" asp-area="Admin" asp-controller="Product" asp-route-id=@item.Id asp-action="Detail">Detail</a>
+                        <a class="btn btn-warning" asp-area="Admin" asp-controller="Product" asp-route-id=@item.Id asp-action="Edit">Edit</a>
+                        <form method="post" asp-area="Admin" asp-controller="Product" asp-route-id="@item.Id" asp-action="Delete" style="display:inline-block">
+                            <button class="btn btn-danger d-inline-block">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        }
+    </table>
+    <div class="paginate-area container mt-4">
+        <nav aria-label="...">
+            <ul class="pagination" style="margin-left:200px;">
+
+                <li class="page-item @(Model.HasPrevious ? " " : "disabled") ">
+                    <a class="page-link" asp-action="Index" asp-route-page="@(Model.CurrentPage - 1)">Previous</a>
+                </li>
+
+
+                @for (int i = 1; i <= Model.TotalPage; i++)
+                {
+                    <li class="page-item @(Model.CurrentPage == i ? "disabled" :""  ) "><a class="page-link@(Model.CurrentPage == i ? "active" :""  )" asp-action="Index" asp-route-page="@i">@i</a></li>
+
+                }
+
+
+                <li class="page-item @(Model.HasNext ? "":"disabled")  ">
+                    <a class="page-link" asp-action="Index" asp-route-page="@(Model.CurrentPage + 1)">Next</a>
+                </li>
+
+            </ul>
+        </nav>
+    </div>
+</div>
+
+

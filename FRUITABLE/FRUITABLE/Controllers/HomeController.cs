@@ -1,6 +1,7 @@
 ﻿
 using FRUITABLE.Data;
 using FRUITABLE.Models;
+using FRUITABLE.Services.Interface;
 using FRUITABLE.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -10,10 +11,12 @@ namespace FRUITABLE.Controllers
     public class HomeController : Controller
     {
         private readonly AppDbContext _context;
+        private readonly IProductService _productService;
 
-        public HomeController(AppDbContext context)
+        public HomeController(AppDbContext context, IProductService productService)
         {
             _context = context;
+            _productService = productService;
         }
 
         public async Task<IActionResult> Index()
@@ -22,7 +25,7 @@ namespace FRUITABLE.Controllers
             SliderInfo sliderInfo = await _context.SliderInfo.FirstOrDefaultAsync();
             List<Category> categories = await _context.Categories.ToListAsync();
             List<Features> features = await _context.Features.ToListAsync();
-            List<Product> products = await _context.Products.Include(m => m.ProductImages).ToListAsync();
+            List<Product> products = await _productService.GetAllAsync();
             List<FactFeatureContent> factFeatureContents = await _context.factFeatureContents.ToListAsync();
             List<ContentService> contentServices = await _context.contentServices.ToListAsync();
             FreshContent freshContent = await _context.freshContents.FirstOrDefaultAsync();
