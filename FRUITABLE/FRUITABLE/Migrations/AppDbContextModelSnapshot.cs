@@ -182,6 +182,41 @@ namespace FRUITABLE.Migrations
                     b.ToTable("Features");
                 });
 
+            modelBuilder.Entity("FRUITABLE.Models.FreshContent", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Image")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("PriceFirst")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PriceSecond")
+                        .HasColumnType("int");
+
+                    b.Property<string>("SubTitle")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("freshContents");
+                });
+
             modelBuilder.Entity("FRUITABLE.Models.Product", b =>
                 {
                     b.Property<int>("Id")

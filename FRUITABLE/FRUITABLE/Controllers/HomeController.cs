@@ -25,6 +25,7 @@ namespace FRUITABLE.Controllers
             List<Product> products = await _context.Products.Include(m => m.ProductImages).ToListAsync();
             List<FactFeatureContent> factFeatureContents = await _context.factFeatureContents.ToListAsync();
             List<ContentService> contentServices = await _context.contentServices.ToListAsync();
+            FreshContent freshContent = await _context.freshContents.FirstOrDefaultAsync();
 
             HomeVM model = new()
             {
@@ -34,7 +35,8 @@ namespace FRUITABLE.Controllers
                 Features = features,
                 Products = products,
                 FactFeatureContents = factFeatureContents,
-                contentServices = contentServices
+                contentServices = contentServices,
+                FreshContent = freshContent
 
             };
 
