@@ -145,7 +145,8 @@ namespace FRUITABLE.Areas.Admin.Controllers
                 Weight = request.Weight,
                 CountrOfOrigin = request.Origin,
                 Check = request.Check,
-                Quality = request.Quality
+                Quality = request.Quality,
+                Price = request.Price,
 
             };
 
@@ -176,7 +177,7 @@ namespace FRUITABLE.Areas.Admin.Controllers
             }
 
 
-            return View(new ProductEditVM { Name = product.Name, MinWeight = product.MinWeight, Images = productImage, Weight = product.Weight, Origin = product.CountrOfOrigin, Check = product.Check, Quality = product.Quality });
+            return View(new ProductEditVM { Name = product.Name, MinWeight = product.MinWeight, Images = productImage, Weight = product.Weight, Origin = product.CountrOfOrigin, Check = product.Check, Price = product.Price, Quality = product.Quality });
 
         }
 
@@ -237,6 +238,8 @@ namespace FRUITABLE.Areas.Admin.Controllers
             existProduct.CountrOfOrigin = productEditVM.Origin;
             existProduct.Check = productEditVM.Check;
             existProduct.CategoryId = (int)productEditVM.CategoryId;
+            existProduct.Price = productEditVM.Price;
+
 
 
             await _context.SaveChangesAsync();

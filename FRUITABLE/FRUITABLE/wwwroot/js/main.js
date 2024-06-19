@@ -1,6 +1,170 @@
 (function ($) {
     "use strict";
 
+
+
+    //Burdan Basla Blet
+
+
+    // Tab-menu
+    $(document).on('click', '.category', function (e) {
+        e.preventDefault();
+        $(this).addClass('active').siblings().removeClass('active');
+        const category = $(this).attr('category-id');
+        const products = $('.fruite-item');
+
+        products.each(function () {
+            if (category === $(this).attr('category-id')) {
+                $(this).parent().fadeIn();
+            }
+            else {
+                $(this).parent().hide();
+            }
+        })
+
+        if (category == 'All') {
+            products.parent().fadeIn();
+        }
+    });
+
+    //Sorting
+    $('.sorting').on('change', function () {
+        const value = $(this).val().trim();
+
+        $(".paginate").css("display", "none");
+
+        $(".products .product-item").slice(0).remove();
+
+        $.ajax({
+            type: "Get",
+            url: `Shop/Sorting?sort=${value}`,
+            success: function (res) {
+                $('.products').append(res);
+            },
+        });
+    });
+
+    // Category filter
+    $('.category-filter').on('click', function () {
+        const categoryId = $(this).attr('category-id');
+
+        $(".paginate").css("display", "none");
+
+        $(".products .product-item").slice(0).remove();
+
+        $.ajax({
+            type: "Get",
+            url: `Shop/CategoryFilter?id=${categoryId}`,
+            success: function (res) {
+                $('.products').append(res);
+            },
+        });
+    });
+
+    //Price filter
+    $('.form-range').on('change', function () {
+        const value = $(this).val().trim();
+
+        $(".paginate").css("display", "none");
+
+        $(".products .product-item").slice(0).remove();
+
+        $.ajax({
+            type: "Get",
+            url: `Shop/PriceFilter?price=${value}`,
+            success: function (res) {
+                $('.products').append(res);
+            },
+        });
+    });
+
+
+    // Add
+    $(document).on("click", ".add-basket", function () {
+        const productId = $(this).attr('product-id');
+
+        $.ajax({
+            type: "Post",
+            url: `Basket/Add?productId=${productId}`,
+            success: function (res) {
+                Swal.fire({
+                    icon: "success",
+                    title: "Added to cart!",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+
+                const count = $(".basket-count");
+                count.text(parseInt(count.text()) + 1);
+            }
+        });
+    });
+
+    // Increase
+    $(document).on("click", ".btn-plus", function () {
+        const id = $(this).attr('id');
+        const btn = $(this);
+
+        $.ajax({
+            type: "Post",
+            url: `Basket/Increase?id=${id}`,
+            success: function (res) {
+
+                btn.closest(".basket-item").find(".total").text(res.totalPrice + ' $');
+
+                const count = $(".basket-count");
+                count.text(parseInt(count.text()) + 1);
+
+                $(".total-price").text('$' + res.total);
+            }
+        });
+    });
+
+    // Decrease
+    $(document).on("click", ".btn-minus", function () {
+        const id = $(this).attr('id');
+        const btn = $(this);
+
+        $.ajax({
+            type: "Post",
+            url: `Basket/Decrease?id=${id}`,
+            success: function (res) {
+
+                const basketItem = btn.closest(".basket-item");
+
+                if (basketItem.find(".quantity input").val() == 0) {
+                    basketItem.remove();
+                } else {
+                    basketItem.find(".total").text(res.totalPrice + ' $');
+                }
+
+                const count = $(".basket-count");
+                count.text(parseInt(count.text()) - 1);
+
+                $(".total-price").text('$' + res.total);
+            }
+        });
+    });
+
+    // Delete
+    $(document).on("click", ".delete-basket", function () {
+        const id = $(this).attr('id');
+        const btn = $(this);
+
+        $.ajax({
+            type: "Post",
+            url: `Basket/Delete?id=${id}`,
+            success: function (res) {
+                btn.closest(".basket-item").remove();
+
+                const count = $(".basket-count");
+                count.text(parseInt(count.text()) - 1);
+
+                $(".total-price").text("$" + res);
+            }
+        });
+    });
+
     // Spinner
     var spinner = function () {
         setTimeout(function () {

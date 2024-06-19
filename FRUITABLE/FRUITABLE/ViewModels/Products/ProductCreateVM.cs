@@ -24,6 +24,8 @@ namespace FRUITABLE.ViewModels.Products
         [Required]
 
         public string Check { get; set; }
+        [Required]
+        public decimal Price { get; set; }
 
         public List<IFormFile> Images { get; set; }
     }

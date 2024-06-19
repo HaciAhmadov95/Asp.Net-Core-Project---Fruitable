@@ -22,6 +22,9 @@ namespace FRUITABLE.ViewModels.Products
 
         public string Check { get; set; }
 
+        [Column(TypeName = "decimal(18, 6)")]
+        public decimal Price { get; set; }
+
         public List<ProductImageVM>? Images { get; set; }
         public List<IFormFile>? Photos { get; set; }
     }

@@ -46,9 +46,9 @@ namespace FRUITABLE.Controllers
                 return View(request);
             }
 
-            await _userManager.AddToRoleAsync(user, userRole.SuperAdmin.ToString());
+            await _userManager.AddToRoleAsync(user, userRole.Member.ToString());
             await _signInManager.SignInAsync(user, false);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Login", "Account");
         }
         [HttpGet]
         public IActionResult Login()
