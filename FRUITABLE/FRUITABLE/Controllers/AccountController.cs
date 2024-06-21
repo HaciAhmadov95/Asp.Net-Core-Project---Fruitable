@@ -1,5 +1,6 @@
 ﻿using FRUITABLE.Helpers.Enums;
 using FRUITABLE.Models;
+using FRUITABLE.Services.Interface;
 using FRUITABLE.ViewModels.Account;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -11,14 +12,22 @@ namespace FRUITABLE.Controllers
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;
         private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly IEmailService _emailService;
         public AccountController(UserManager<AppUser> userManager,
                                  SignInManager<AppUser> signInManager,
-                                 RoleManager<IdentityRole> roleManager)
+                                 RoleManager<IdentityRole> roleManager,
+                                 IEmailService emailService)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _roleManager = roleManager;
+            _emailService = emailService;
         }
+
+        //REGISTER
+
+
+
         [HttpGet]
         public IActionResult Register()
         {
@@ -46,10 +55,56 @@ namespace FRUITABLE.Controllers
                 return View(request);
             }
 
-            await _userManager.AddToRoleAsync(user, userRole.Member.ToString());
+            await _userManager.AddToRoleAsync(user, userRole.SuperAdmin.ToString());
+
+            string token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+
+            string url = Url.Action(nameof(ConfirmEmail), "Account", new { userId = user.Id, token }, Request.Scheme, Request.Host.ToString());
+
+            string html = string.Empty;
+
+            using (StreamReader reader = new("wwwroot/templates/register.html"))
+            {
+                html = await reader.ReadToEndAsync();
+            }
+
+            html = html.Replace("link", url);
+            html = html.Replace("{UserFullName}", user.FullName);
+
+
+            string subject = "Register confirmation";
+
+            _emailService.Send(user.Email, html, subject);
+
+
+
             await _signInManager.SignInAsync(user, false);
-            return RedirectToAction("Login", "Account");
+
+            return RedirectToAction(nameof(VerifyEmail));
+
         }
+
+        [HttpGet]
+
+        public IActionResult VerifyEmail()
+        {
+            return View();
+        }
+
+
+
+
+        [HttpGet]
+        public async Task<IActionResult> ConfirmEmail(string userId, string token)
+        {
+            var user = await _userManager.FindByIdAsync(userId);
+            await _userManager.ConfirmEmailAsync(user, token);
+            return RedirectToAction(nameof(Login));
+        }
+
+
+
+        //LOGIN
         [HttpGet]
         public IActionResult Login()
         {
@@ -83,6 +138,13 @@ namespace FRUITABLE.Controllers
             await _signInManager.SignInAsync(user, login.IsRemember);
             return RedirectToAction("Index", "Home");
         }
+
+
+
+
+
+        //LOGOUT
+
 
         public async Task<IActionResult> Logout()
         {

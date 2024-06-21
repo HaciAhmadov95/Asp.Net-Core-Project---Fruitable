@@ -1,4 +1,5 @@
 using FRUITABLE.Data;
+using FRUITABLE.Helpers;
 using FRUITABLE.Models;
 using FRUITABLE.Services;
 using FRUITABLE.Services.Interface;
@@ -17,18 +18,26 @@ builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<ISettingsService, SettingsService>();
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<IBasketService, BasketService>();
+builder.Services.AddScoped<IEmailService, EmailService>();
 
-builder.Services.AddIdentity<AppUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
+builder.Services.AddIdentity<AppUser, IdentityRole>()
+                .AddEntityFrameworkStores<AppDbContext>()
+                .AddDefaultTokenProviders();
 
 builder.Services.Configure<IdentityOptions>(opt =>
 {
     opt.Password.RequireDigit = true;
     opt.Password.RequiredUniqueChars = 1;
+    opt.Password.RequiredLength = 8;
     opt.Password.RequireLowercase = true;
     opt.Password.RequireUppercase = true;
     opt.Password.RequireNonAlphanumeric = true;
     opt.User.RequireUniqueEmail = true;
+
+    opt.SignIn.RequireConfirmedEmail = true;
 });
+
+builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("Smtp"));
 
 var app = builder.Build();
 

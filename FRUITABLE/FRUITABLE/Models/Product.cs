@@ -9,6 +9,7 @@ namespace FRUITABLE.Models
         public int CategoryId { get; set; }
         public Category Category { get; set; }
         public string Quality { get; set; }
+        [Column(TypeName = "decimal(18, 6)")]
         public decimal Price { get; set; }
         public string Check { get; set; }
         public string CountrOfOrigin { get; set; }

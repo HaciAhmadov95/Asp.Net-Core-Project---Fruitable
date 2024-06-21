@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "C0pEFkw1RWbTPqpyPwy+OdqrAbh9xO0N7n4A7IP417U=",
+  "Hash": "w370CDtK4uy7JiDjNsGGzCqS0PfG7sijueLOaX8qt68=",
   "Source": "FRUITABLE",
   "BasePath": "_content/FRUITABLE",
   "Mode": "Default",
@@ -17644,6 +17644,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\scss\\bootstrap\\scss\\vendor\\_rfs.scss"
+    },
+    {
+      "Identity": "C:\\Users\\ACER PREDATOR\\OneDrive\\Desktop\\FRUITABLE-Asp.Net Project\\FRUITABLE\\FRUITABLE\\wwwroot\\template\\register.html",
+      "SourceId": "FRUITABLE",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ACER PREDATOR\\OneDrive\\Desktop\\FRUITABLE-Asp.Net Project\\FRUITABLE\\FRUITABLE\\wwwroot\\",
+      "BasePath": "_content/FRUITABLE",
+      "RelativePath": "template/register.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\template\\register.html"
     }
   ]
 }

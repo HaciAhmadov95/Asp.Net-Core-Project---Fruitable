@@ -252,3 +252,9 @@ C:\Users\ACER PREDATOR\OneDrive\Desktop\FRUITABLE-Asp.Net Project\FRUITABLE\FRUI
 C:\Users\ACER PREDATOR\OneDrive\Desktop\FRUITABLE-Asp.Net Project\FRUITABLE\FRUITABLE\obj\Release\net6.0\FRUITABLE.pdb
 C:\Users\ACER PREDATOR\OneDrive\Desktop\FRUITABLE-Asp.Net Project\FRUITABLE\FRUITABLE\obj\Release\net6.0\FRUITABLE.genruntimeconfig.cache
 C:\Users\ACER PREDATOR\OneDrive\Desktop\FRUITABLE-Asp.Net Project\FRUITABLE\FRUITABLE\obj\Release\net6.0\ref\FRUITABLE.dll
+C:\Users\ACER PREDATOR\OneDrive\Desktop\FRUITABLE-Asp.Net Project\FRUITABLE\FRUITABLE\bin\Release\net6.0\BouncyCastle.Cryptography.dll
+C:\Users\ACER PREDATOR\OneDrive\Desktop\FRUITABLE-Asp.Net Project\FRUITABLE\FRUITABLE\bin\Release\net6.0\MailKit.dll
+C:\Users\ACER PREDATOR\OneDrive\Desktop\FRUITABLE-Asp.Net Project\FRUITABLE\FRUITABLE\bin\Release\net6.0\MimeKit.dll
+C:\Users\ACER PREDATOR\OneDrive\Desktop\FRUITABLE-Asp.Net Project\FRUITABLE\FRUITABLE\bin\Release\net6.0\System.Formats.Asn1.dll
+C:\Users\ACER PREDATOR\OneDrive\Desktop\FRUITABLE-Asp.Net Project\FRUITABLE\FRUITABLE\bin\Release\net6.0\System.Security.Cryptography.Pkcs.dll
+C:\Users\ACER PREDATOR\OneDrive\Desktop\FRUITABLE-Asp.Net Project\FRUITABLE\FRUITABLE\bin\Release\net6.0\runtimes\win\lib\net6.0\System.Security.Cryptography.Pkcs.dll
