@@ -26,8 +26,6 @@ namespace FRUITABLE.Controllers
 
         //REGISTER
 
-
-
         [HttpGet]
         public IActionResult Register()
         {
@@ -63,7 +61,7 @@ namespace FRUITABLE.Controllers
 
             string html = string.Empty;
 
-            using (StreamReader reader = new("wwwroot/templates/register.html"))
+            using (StreamReader reader = new("wwwroot/template/register.html"))
             {
                 html = await reader.ReadToEndAsync();
             }
@@ -81,7 +79,6 @@ namespace FRUITABLE.Controllers
             await _signInManager.SignInAsync(user, false);
 
             return RedirectToAction(nameof(VerifyEmail));
-
         }
 
         [HttpGet]
@@ -90,7 +87,6 @@ namespace FRUITABLE.Controllers
         {
             return View();
         }
-
 
 
 
@@ -105,6 +101,7 @@ namespace FRUITABLE.Controllers
 
 
         //LOGIN
+
         [HttpGet]
         public IActionResult Login()
         {
@@ -138,9 +135,6 @@ namespace FRUITABLE.Controllers
             await _signInManager.SignInAsync(user, login.IsRemember);
             return RedirectToAction("Index", "Home");
         }
-
-
-
 
 
         //LOGOUT

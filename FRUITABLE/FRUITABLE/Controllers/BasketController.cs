@@ -24,7 +24,7 @@ namespace FRUITABLE.Controllers
         public async Task<IActionResult> Index()
         {
             if (!User.Identity.IsAuthenticated)
-                return RedirectToAction("SignIn", "Account");
+                return RedirectToAction("Login", "Account");
 
             AppUser existUser = await _userManager.FindByNameAsync(User.Identity.Name);
 
@@ -58,7 +58,7 @@ namespace FRUITABLE.Controllers
                 return BadRequest();
 
             if (!User.Identity.IsAuthenticated)
-                return RedirectToAction("SignIn", "Account");
+                return RedirectToAction("Login", "Account");
 
             AppUser existUser = await _userManager.FindByNameAsync(User.Identity.Name);
 
@@ -173,7 +173,7 @@ namespace FRUITABLE.Controllers
                 return RedirectToAction("NotFound", "Error");
 
             if (!User.Identity.IsAuthenticated)
-                return RedirectToAction("SignIn", "Account");
+                return RedirectToAction("Login", "Account");
 
             AppUser existUser = await _userManager.FindByNameAsync(User.Identity.Name);
 

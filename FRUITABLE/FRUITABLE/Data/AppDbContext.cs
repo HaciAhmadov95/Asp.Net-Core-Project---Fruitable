@@ -22,6 +22,7 @@ namespace FRUITABLE.Data
         public DbSet<FreshContent> freshContents { get; set; }
         public DbSet<Basket> Basket { get; set; }
         public DbSet<BasketProduct> basketProducts { get; set; }
+        public DbSet<Comments> Comments { get; set; }
 
     }
 }

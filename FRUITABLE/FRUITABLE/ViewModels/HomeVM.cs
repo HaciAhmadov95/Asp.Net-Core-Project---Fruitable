@@ -12,5 +12,6 @@ namespace FRUITABLE.ViewModels
         public List<Models.FactFeatureContent> FactFeatureContents { get; set; }
         public List<Models.ContentService> contentServices { get; set; }
         public FreshContent FreshContent { get; set; }
+        public List<Comments> Comments { get; set; }
     }
 }
